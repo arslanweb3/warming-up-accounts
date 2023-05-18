@@ -126,22 +126,21 @@ def func_chunks_generators(lst, n):
         yield lst[i: i + n]
 
 
-if __name__ == "__name__":
+if __name__ == "__main__":
 
-    cprint(f'\n============================================= arslan.web3 =============================================', 'cyan')
+    cprint(f'\n============================================= Арслан, крипта и web3 =============================================', 'cyan')
 
-    cprint(f'\nsubscribe to me : https://t.me/arslan_web3', 'magenta')
+    cprint(f'\nПодпишись : https://t.me/arslan_web3', 'magenta')
 
     with open("private_keys.txt", "r") as f:
         keys_list = [row.strip() for row in f]
 
     random.shuffle(keys_list)
 
-    for private_key in keys_list:
+    for privatekey in keys_list:
 
         random.shuffle(swaps)
-
-        zero = random.radint(1, 3)
+        zero = random.randint(1, 3)
 
         # Если суммировать, код генерирует фрагменты списка (свопы) с размером, определяемым случайным целым числом (нулем),
         # с помощью функции func_chunks_generators. Это достигается путем создания объекта-генератора,
@@ -150,7 +149,7 @@ if __name__ == "__name__":
         done = (list(func_chunks_generators(swaps, zero)))
 
         cprint(
-            f'\n=============== start : {private_key} ===============', 'white')
+            f'\n=============== start : {privatekey} ===============', 'white')
 
         for swap in done[0]:
 
@@ -160,11 +159,10 @@ if __name__ == "__name__":
             random_amount = random.randint(6, 9)
             amount_to_swap = round(random.uniform(
                 0.000001, 0.000009), random_amount)
-
             to_token_address = swap['address']
             to_symbol = swap['symbol']
 
-            web_sushi_guild(private_key, amount_to_swap,
+            web_sushi_guild(privatekey, amount_to_swap,
                             to_token_address, to_symbol)
 
             time.sleep(random.randint(5, 15))
